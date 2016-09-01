@@ -36,11 +36,12 @@ ActiveRecord::Schema.define(version: 20150719115626) do
   create_table "subject_item_notes", force: :cascade do |t|
     t.integer  "value"
     t.integer  "subject_item_id"
+    t.integer  "student_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
-  # add_index "subject_item_notes", ["student_id"], name: "index_subject_item_notes_on_student_id", using: :btree
+  add_index "subject_item_notes", ["student_id"], name: "index_subject_item_notes_on_student_id", using: :btree
   add_index "subject_item_notes", ["subject_item_id"], name: "index_subject_item_notes_on_subject_item_id", using: :btree
 
   create_table "subject_items", force: :cascade do |t|
@@ -80,7 +81,7 @@ ActiveRecord::Schema.define(version: 20150719115626) do
 
   add_foreign_key "participations", "students"
   add_foreign_key "participations", "subject_items"
-  # add_foreign_key "subject_item_notes", "students"
+  add_foreign_key "subject_item_notes", "students"
   add_foreign_key "subject_item_notes", "subject_items"
   add_foreign_key "subject_items", "teachers"
 end
