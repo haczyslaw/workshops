@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/haczyslaw/workshops.svg?branch=master)](https://travis-ci.org/haczyslaw/workshops)
+
 RoR Workshops
 ================
 
