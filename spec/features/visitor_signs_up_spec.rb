@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 feature 'Visitor signs up' do
-  let(:user) { create :user }
+  let(:user) { build :user }
+  let(:saved_user) { create :user }
 
   scenario 'with valid email and password' do
     sign_up_with 'test@email.com', 'password'
@@ -17,5 +18,10 @@ feature 'Visitor signs up' do
   scenario 'with blank password' do
     sign_up_with user.email, ''
     expect(page).to have_content("can't be blank")
+  end
+
+  scenario 'with already taken email' do
+    sign_up_with saved_user.email, ''
+    expect(page).to have_content('has already been taken')
   end
 end
